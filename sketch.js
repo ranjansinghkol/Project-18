@@ -88,7 +88,7 @@ function draw() {
 
   drawSprites();
   fill(225);
-  text("Score: " + score, 225, 30);
+  text("Score: " + score, 50, windowHeight / 10);
 }
 
 function mouseClicked() {
