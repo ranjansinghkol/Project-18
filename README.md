@@ -1,1 +1,1 @@
-# Project-18
+# A Treasure run game compatible with mobile devices
