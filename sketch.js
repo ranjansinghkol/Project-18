@@ -66,15 +66,18 @@ function draw() {
     createSword();
 
     if (cashG.isTouching(boy)) {
-      cashG.destroyEach();
       score = score + 10;
-    } else if (diamondsG.isTouching(boy)) {
-      diamondsG.destroyEach();
+      cashG.destroyEach();
+    } 
+    if (diamondsG.isTouching(boy)) {
       score = score + 50;
-    } else if (jwelleryG.isTouching(boy)) {
-      jwelleryG.destroyEach();
+      diamondsG.destroyEach();
+    } 
+    if (jwelleryG.isTouching(boy)) {
       score = score + 25;
-    } else if (boy.isTouching(swordGroup)) {
+      jwelleryG.destroyEach();
+    }
+    if (boy.isTouching(swordGroup)) {
       gameState = END;
     }
   } else if (gameState === END) {
