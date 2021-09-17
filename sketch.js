@@ -66,24 +66,22 @@ function draw() {
     createSword();
 
     if (cashG.isTouching(boy)) {
-      score = score + 10;
       cashG.destroyEach();
-    } 
-    if (diamondsG.isTouching(boy)) {
-      score = score + 50;
+      score = score + 10;
+    } else if (diamondsG.isTouching(boy)) {
       diamondsG.destroyEach();
-    } 
-    if (jwelleryG.isTouching(boy)) {
-      score = score + 25;
+      score = score + 50;
+    } else if (jwelleryG.isTouching(boy)) {
       jwelleryG.destroyEach();
-    }
-    if (boy.isTouching(swordGroup)) {
+      score = score + 25;
+    } else if (boy.isTouching(swordGroup)) {
       gameState = END;
     }
   } else if (gameState === END) {
     cashG.destroyEach();
     diamondsG.destroyEach();
     jwelleryG.destroyEach();
+    swordGroup.destroyEach();
     boy.visible = false;
     path.velocityY = 0;
     endScreen.visible = true;
@@ -108,7 +106,7 @@ function createCash() {
   if (World.frameCount % 200 == 0) {
     var cash = createSprite(Math.round(random(50, windowWidth - 50), 40, 10, 10));
     cash.addImage(cashImg);
-    cash.scale = 0.12;
+    cash.scale = 0.24 / 2;
     cash.velocityY = 3;
     cash.lifetime = 1000;
     cashG.add(cash);
@@ -119,7 +117,7 @@ function createDiamonds() {
   if (World.frameCount % 410 == 0) {
     var diamonds = createSprite(Math.round(random(50, windowWidth - 50), 40, 10, 10));
     diamonds.addImage(diamondsImg);
-    diamonds.scale = 0.03;
+    diamonds.scale = 0.06 / 2;
     diamonds.velocityY = 3;
     diamonds.lifetime = 1000;
     diamondsG.add(diamonds);
@@ -130,7 +128,7 @@ function createJwellery() {
   if (World.frameCount % 320 == 0) {
     var jwellery = createSprite(Math.round(random(50, windowWidth - 50), 40, 10, 10));
     jwellery.addImage(jwelleryImg);
-    jwellery.scale = 0.13;
+    jwellery.scale = 0.26 / 2;
     jwellery.velocityY = 3;
     jwellery.lifetime = 1000;
     jwelleryG.add(jwellery);
@@ -141,7 +139,7 @@ function createSword() {
   if (World.frameCount % 530 == 0) {
     var sword = createSprite(Math.round(random(50, windowWidth - 50), 40, 10, 10));
     sword.addImage(swordImg);
-    sword.scale = 0.1;
+    sword.scale = 0.2 / 2;
     sword.velocityY = 3;
     sword.lifetime = 1000;
     swordGroup.add(sword);
